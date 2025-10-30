@@ -1,0 +1,27 @@
+-- 1. Total Sales by Region
+SELECT Region, SUM(Sales) AS Total_Sales
+FROM sales_data
+GROUP BY Region
+ORDER BY Total_Sales DESC;
+
+-- 2. Top 5 Best-Selling Products
+SELECT Product, SUM(Sales) AS Total_Sales
+FROM sales_data
+GROUP BY Product
+ORDER BY Total_Sales DESC
+LIMIT 5;
+
+-- 3. Monthly Sales Trend
+SELECT strftime('%Y-%m', Date) AS Month, SUM(Sales) AS Total_Sales
+FROM sales_data
+GROUP BY Month
+ORDER BY Month;
+
+-- 4. Average Profit Margin by Region
+SELECT Region, AVG(Profit/Sales)*100 AS Avg_Profit_Percentage
+FROM sales_data
+GROUP BY Region;
+
+-- 5. Total Sales and Profit Summary
+SELECT SUM(Sales) AS Total_Sales, SUM(Profit) AS Total_Profit
+FROM sales_data;
